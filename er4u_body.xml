@@ -41,13 +41,13 @@
 		</Joint>
 
 		<Body name="arm0" type="dynamic">
-			
-			<Translation> 0 110 145 </Translation>
+
+			<Translation> -5 110 145 </Translation>
 			<rotationaxis> 0 0 1 90 </rotationaxis>
 			
 			
 			<Geom type="box">
-				<render> mod_level_2.wrl</render>
+				<render> mod_level_2_1.wrl</render>
 			</Geom>
 			
 		</Body>
@@ -57,17 +57,16 @@
 			<anchor> -100 0 0 </anchor> 
 			<Body>arm0</Body>
 			<Body>shoulder</Body>
-			<axis>0 0 1</axis>
+			<axis>0 1 0</axis>
 			<Weight>1.0</Weight>
 
 		</Joint>
 
 		<Body name="arm1" type="dynamic">
-			
-			<Translation> 110 345 145 </Translation>
-			<rotationaxis> 0 0 1 90 </rotationaxis>
-			<rotationaxis> 0 1 0 90 </rotationaxis>
-			
+
+			<offsetfrom>arm0</offsetfrom>
+			<Translation> 235 -2.5 0 </Translation>
+						
 			<Geom type="box">
 				<render> mod_level_2.wrl</render>
 			</Geom>
@@ -75,10 +74,56 @@
 		</Body>
 
 		<Joint circular="true" name="Joint2" type="hinge">
+			
 			<offsetfrom>arm1</offsetfrom>
 			<anchor> -100 0 0 </anchor> 
 			<Body>arm1</Body>
 			<Body>arm0</Body>
+			<axis>0 1 0</axis>
+			<Weight>1.0</Weight>
+
+		</Joint>
+
+		<Body name="gripper" type="dynamic">
+
+			<offsetfrom>arm1</offsetfrom>
+			<Translation> 40 0 0 </Translation>
+			<rotationaxis> 0 0 1 -90 </rotationaxis>
+			<rotationaxis> 1 0 0 90 </rotationaxis>
+			<Geom type="box">
+				<render> gripper.wrl</render>
+			</Geom>
+			
+		</Body>
+
+		<Joint circular="true" name="Joint3" type="hinge">
+			
+			<offsetfrom>gripper</offsetfrom>
+			<anchor> 0 100 0 </anchor> 
+			<Body>arm1</Body>
+			<Body>gripper</Body>
+			<axis>0 0 1</axis>
+			<Weight>1.0</Weight>
+
+		</Joint>
+
+		<Body name="fingers" type="dynamic">
+
+			<offsetfrom>gripper</offsetfrom>
+			<Translation> 0 205 0 </Translation>
+			<rotationaxis> 1 0 0 -90 </rotationaxis>			
+			<Geom type="box">
+				<render> fingers.wrl</render>
+			</Geom>
+			
+		</Body>
+
+		<Joint circular="true" name="Joint4" type="hinge">
+			
+			<offsetfrom>fingers</offsetfrom>
+			<anchor> 0 0 0 </anchor> 
+			<Body>gripper</Body>
+			<Body>fingers</Body>
 			<axis>0 0 1</axis>
 			<Weight>1.0</Weight>
 
@@ -86,4 +131,9 @@
 
 	</KinBody>
 
+	<Manipulator name="er4u_arm">
+		<effector>fingers</effector>
+		<base>Base</base>
+		<direction> 0 0 1 </direction>
+	</Manipulator>
 </Robot>
