@@ -42,24 +42,12 @@
 
 		<Body name="arm0" type="dynamic">
 			
-			<Translation> 110 110 145 </Translation>
+			<Translation> 0 110 145 </Translation>
 			<rotationaxis> 0 0 1 90 </rotationaxis>
-			<rotationaxis> 0 1 0 90 </rotationaxis>
+			
 			
 			<Geom type="box">
-				<render> level_2.dae</render>
-			</Geom>
-			
-		</Body>
-
-		<Body name="arm1" type="dynamic">
-			
-			<Translation> -110 110 145 </Translation>
-			<rotationaxis> 0 0 1 90 </rotationaxis>
-			<rotationaxis> 0 1 0 90 </rotationaxis>
-			
-			<Geom type="box">
-				<render> level_2_1.wrl</render>
+				<render> mod_level_2.wrl</render>
 			</Geom>
 			
 		</Body>
@@ -68,43 +56,29 @@
 			<offsetfrom>arm0</offsetfrom>
 			<anchor> -100 0 0 </anchor> 
 			<Body>arm0</Body>
-			<Body>arm1</Body>
 			<Body>shoulder</Body>
 			<axis>0 0 1</axis>
 			<Weight>1.0</Weight>
 
 		</Joint>
 
-		<Body name="arm2" type="dynamic">
+		<Body name="arm1" type="dynamic">
 			
-			<Translation> 100 345 145 </Translation>
+			<Translation> 110 345 145 </Translation>
 			<rotationaxis> 0 0 1 90 </rotationaxis>
 			<rotationaxis> 0 1 0 90 </rotationaxis>
 			
 			<Geom type="box">
-				<render> level_2_2.wrl</render>
-			</Geom>
-			
-		</Body>
-
-		<Body name="arm3" type="dynamic">
-			
-			<Translation> -100 345 145 </Translation>
-			<rotationaxis> 0 0 1 90 </rotationaxis>
-			<rotationaxis> 0 1 0 90 </rotationaxis>
-			
-			<Geom type="box">
-				<render> level_2_3.wrl</render>
+				<render> mod_level_2.wrl</render>
 			</Geom>
 			
 		</Body>
 
 		<Joint circular="true" name="Joint2" type="hinge">
-			<offsetfrom>arm2</offsetfrom>
+			<offsetfrom>arm1</offsetfrom>
 			<anchor> -100 0 0 </anchor> 
-			<Body>arm2</Body>
-			<Body>arm3</Body>
-			<Body>shoulder</Body>
+			<Body>arm1</Body>
+			<Body>arm0</Body>
 			<axis>0 0 1</axis>
 			<Weight>1.0</Weight>
 
