@@ -134,6 +134,6 @@
 	<Manipulator name="er4u_arm">
 		<effector>fingers</effector>
 		<base>Base</base>
-		<direction> 0 0 1 </direction>
+		<direction> 1 0 0 </direction>
 	</Manipulator>
 </Robot>
